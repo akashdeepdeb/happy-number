@@ -1,4 +1,4 @@
-# Enter number and base and result tells you if number is happy :) or sad :(h
+# Enter number and base and result tells you if number is happy :) or sad :(
 
 # returns sum of squares of all digits in the argument `arr`
 def sumOfSquares(arr):
@@ -18,16 +18,18 @@ def returnDigits(num, b):
 
 # returns whether or not the number passed in is happy
 def isHappy(num, b):
-	# options: either `num` is number 
+	# options: either `num` is -
 	# 1. base_10, or 
 	# 2. base_`b`
 	n = [int(x) for x in list(num)] #1
-	# n = returnDigits(int(num), b) #2
+	#n = returnDigits(int(num), b) 
+	print(n)
 
 	slow = fast = n
 	while True:
 		slow = returnDigits(sumOfSquares(slow), b)
 		fast = returnDigits(sumOfSquares(returnDigits(sumOfSquares(fast), b)), b)
+		print(slow)
 		if sumOfSquares(slow) == 1 or sumOfSquares(fast) == 1:
 			return True
 		if sumOfSquares(slow) == sumOfSquares(fast):
@@ -38,12 +40,13 @@ def main():
 	#assuming inputs are correct
 	num = input('Enter number: ')
 	base = input('Enter base: ')
-	#print(num, base, isHappy(str(num), int(base)))
-	count = 0
-	for i in range(1,10001):
-		if isHappy(str(i), 5):
-			count+=1
-	print(count)
+	nums = [1,17,45,85,98,136,160]
+	for i in nums:
+		print(i, base, isHappy(str(i), int(base)))
+	# print(num, base, isHappy(str(num), int(base)))
+	# for i in range(1,100):
+	# 	print(i, base, isHappy(str(i), int(base)))
+	# 	print('\n')
 	return
 
 main()
